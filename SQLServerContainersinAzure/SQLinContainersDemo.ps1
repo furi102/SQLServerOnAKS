@@ -171,8 +171,8 @@ az network vnet subnet list \
 #Used below with the --service-principal and --client-secret parameters from output of above
 #Can see a principal created in AAD for the name of the cluster (show AAD - enterprise applications - AKS)
 az aks create \
-    --resource-group RG-AKS \
-    --name AKSDemoCluster \
+    --resource-group AFU-DP200 \
+    --name AFU-AKSCluster \
     --node-count 2 \
     --network-plugin azure \
     --vnet-subnet-id <RESID> \
@@ -184,7 +184,7 @@ az aks create \
 #Show the users for the subnet and note the service principal given Network Contributor rights
 
 #Get credentials for the AKS cluster
-az aks get-credentials --resource-group RG-AKS --name AKSDemoCluster
+az aks get-credentials --resource-group AFU-DP200 --name AFU-AKSCluster
 
 #View the nodes
 kubectl get nodes
@@ -201,7 +201,7 @@ kubectl create clusterrolebinding kubernetes-dashboard \
     --serviceaccount=kube-system:kubernetes-dashboard
 
 #Get a tunnel to the portal
-az aks browse --resource-group RG-AKS --name AKSDemoCluster
+az aks browse --resource-group AFU-DP200 --name AFU-AKSCluster
 
 #Deploy the SQL instance
 #https://docs.microsoft.com/en-us/sql/linux/tutorial-sql-server-containers-kubernetes?view=sql-server-2017
@@ -225,7 +225,7 @@ kubectl get pod
 kubectl get services
 
 #View all the components deployed
-az aks browse --resource-group RG-AKS --name AKSDemoCluster
+az aks browse --resource-group AFU-DP200 --name AFU-AKSCluster
 
 #If wanted to interact
 kubectl exec -it mssql-deployment-? bash
